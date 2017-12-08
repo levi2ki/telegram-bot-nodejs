@@ -1,0 +1,31 @@
+{
+  "name": "telegram-bot-nodejs",
+  "version": "0.0.1",
+  "description": "bot",
+  "main": "index.js",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.29.0",
+    "nodemon": "^1.12.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levi2ki/telegram-bot-nodejs.git"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "levi2ki",
+    "nodejs"
+  ],
+  "author": "levi2ki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/levi2ki/telegram-bot-nodejs/issues"
+  },
+  "homepage": "https://github.com/levi2ki/telegram-bot-nodejs#readme"
+}
