@@ -1,9 +1,13 @@
-const path = require('path');
-const fs = require('fs');
-const TelegramBot = require('node-telegram-bot-api');
-const 
-// replace the value below with the Telegram token you receive from @BotFather
+const path = require('path')
+const fs = require('fs')
+const TelegramBot = require('node-telegram-bot-api')
+const request = require('request')
+const uuid = require('uuid').v4
 
+
+const data = require('./prefs').data
+const token = require('./token.js')
+// replace the value below with the Telegram token you receive from @BotFather
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
@@ -32,9 +36,29 @@ bot.on('text', (msg) => {
 });
 
 bot.on('photo', (msg) => {
-  console.log(msg);
-  const chatId = msg.chat.id;
-  
-  bot.sendMessage(chatId, 'Received your photo');
-  return;
+
+  const chatId = msg.chat.id
+  bot.getFileLink(msg.photo[2].file_id)
+    .then((lnk) => {
+      let file = fs.createWriteStream(`${data}/${uuid()}${path.extname(lnk)}`)
+      request.get(lnk).pipe(file).on('close', () => {bot.sendMessage(chatId, 'Received your photo')})
+    })
+    .catch(err => {
+      throw new Error(err);
+    })
+
+});
+bot.on('document', (msg) => {
+
+  const chatId = msg.chat.id
+  console.log(msg)
+  bot.getFileLink(msg.document.file_id)
+    .then((lnk) => {
+      let file = fs.createWriteStream(`${data}/${uuid()}${path.extname(lnk)}`)
+      request.get(lnk).pipe(file).on('close', () => {bot.sendMessage(chatId, 'Received your photo')})
+    })
+    .catch(err => {
+      throw new Error(err);
+    })
+
 });

@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "node-telegram-bot-api": "^0.29.0",
-    "nodemon": "^1.12.5"
+    "nodemon": "^1.12.5",
+    "request": "^2.83.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {},
   "scripts": {
