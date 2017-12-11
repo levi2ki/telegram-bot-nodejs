@@ -4,6 +4,7 @@
   "description": "bot",
   "main": "index.js",
   "dependencies": {
+    "mongodb": "^3.0.0-rc0",
     "node-telegram-bot-api": "^0.29.0",
     "nodemon": "^1.12.5",
     "request": "^2.83.0",
